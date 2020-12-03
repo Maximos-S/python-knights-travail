@@ -38,18 +38,26 @@ class Node():
             self._parent = node
             node.add_child(self)
 
-    # def __repr__(self):
-    #     return(f"value = {self.value},")
-
-
+    def depth_search(self, value):
+        if self.value == value:
+            return self
+        if self.children == []:
+            return None
+        for child in self.children:
+            search_res = child.depth_search(value)
+            if search_res:
+                return search_res
+        return search_res
 
 
 node1 = Node("root1")
 node2 = Node("root2")
 node3 = Node("root3")
 
-node3.parent = node1
 node3.parent = node2
+node1.parent = node3
 
-print(node1.children)
-print(node2.children)
+# print(node1.children)
+# print(node2.children)
+
+# print(node2.depth_search("root"))

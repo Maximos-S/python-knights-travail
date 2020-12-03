@@ -48,6 +48,23 @@ class Node():
             if search_res:
                 return search_res
         return search_res
+    
+    def breadth_search(self, value):
+        if self.value == value:
+            return self
+        if self.children == []:
+            return None
+        children = [child for child in self.children]
+        while len(children):
+            if children[0].value == value:
+                return children[0]
+            children.extend(children[0].children)
+            children.pop(0)
+        return None
+
+        # for child in self.children:
+        #     if child.value == value:
+        #         return child
 
 
 node1 = Node("root1")
@@ -60,4 +77,4 @@ node1.parent = node3
 # print(node1.children)
 # print(node2.children)
 
-# print(node2.depth_search("root"))
+print(node2.breadth_search("root2").value)

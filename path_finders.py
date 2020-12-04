@@ -4,7 +4,7 @@ from tree import Node
 class KnightPathFinder():
     def __init__(self, root):
         self._root = root
-        self._considered_positions = {root}
+        self._considered_positions = set(root)
 
     def get_valid_moves(self, pos):
         moves = []
@@ -22,9 +22,16 @@ class KnightPathFinder():
         return moves
 
     def new_move_positions(self, pos, ):
-        self.get_valid_moves(pos)
+        validMoves = self.get_valid_moves(pos).difference(self._considered_positions)
+        self._considered_positions = self._considered_positions.union(validMoves)
+        # print(self._considered_positions)
+        # print(validMoves)
+        return validMoves 
 
-knight_moves = KnightPathFinder((0, 0))
 
-print(knight_moves.get_valid_moves((8, 8)))
+# knight_moves = KnightPathFinder((6, 7))
 
+# print(knight_moves.new_move_positions((8, 8)))
+
+finder = KnightPathFinder((0, 0))
+print(finder.new_move_positions((0, 0))) 

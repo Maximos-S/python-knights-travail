@@ -18,7 +18,7 @@ class KnightPathFinder():
         moves.append((pos[0]-1, pos[1]+2))
         moves.append((pos[0]-1, pos[1]-2))
 
-        moves = [move for move in moves if (move[0] < 9 and move[0] > -1) and (move[1] < 9 and move[1] > -1)]
+        moves = {move for move in moves if (move[0] < 9 and move[0] > -1) and (move[1] < 9 and move[1] > -1)}
         return moves
 
     def new_move_positions(self, pos, ):

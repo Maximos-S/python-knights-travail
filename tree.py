@@ -61,7 +61,9 @@ class Node():
             children.extend(children[0].children)
             children.pop(0)
         return None
-
+    
+    def __repr__(self, ):
+        return f"this is the value{self.value}"
         # for child in self.children:
         #     if child.value == value:
         #         return child
